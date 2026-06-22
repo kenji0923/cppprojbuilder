@@ -1,0 +1,36 @@
+#!/bin/sh
+
+
+if [ $# -ne 1 ]; then
+  echo "Usage : $(basename "$0") project_name"
+  exit 1
+fi
+
+
+# Resolve the real script location, following symlinks, so this works when
+# CreateCppProject is symlinked onto PATH.
+script_path=$(readlink -f "$0")
+script_dir=$(dirname "$script_path")
+template_dir="$script_dir/template/project"
+
+project_name="$1"
+
+
+mkdir -p "${project_name}/src"
+cp -R "${template_dir}/." "${project_name}/src/"
+mkdir -p "${project_name}/src/core/include/${project_name}"
+
+# Substitute the project name placeholder across every generated file.
+find "${project_name}/src" -type f -exec sed -i "s/VAR_PROJECT_NAME/${project_name}/g" {} +
+
+# Ignore build/install output in the generated project.
+cat > "${project_name}/.gitignore" <<'EOF'
+# Build / install output
+build/
+install/
+
+# Editor / OS cruft
+*.swp
+*~
+.DS_Store
+EOF

@@ -1,0 +1,8 @@
+# Scratch / generated test output
+/tmp-*/
+
+# Editor / OS cruft
+*.swp
+*~
+*.bkp
+.DS_Store
