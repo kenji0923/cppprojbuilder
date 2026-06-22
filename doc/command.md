@@ -10,13 +10,13 @@ Creates `MyProj/src/` from `template/project/` and substitutes the project name
 across all generated files. Library sources live in `MyProj/src/core/`
 (headers under `core/include/MyProj/`), executables in `MyProj/src/exec/`.
 
-`CreateCppProject` and `AddLibrary` follow symlinks to find their templates, so
+`CreateCppProject` and `AddCppLibrary` follow symlinks to find their templates, so
 they can be symlinked onto `PATH`.
 
 ## Add a library
 
 ```sh
-./AddLibrary MyProj MyLib
+./AddCppLibrary MyProj MyLib
 ```
 
 Creates `MyProj/src/core/include/MyProj/MyLib.h` and `MyProj/src/core/MyLib.cc`

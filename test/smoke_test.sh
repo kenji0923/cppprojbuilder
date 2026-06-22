@@ -14,7 +14,7 @@ trap cleanup EXIT
 
 # Symlink the scripts so we test invocation through a symlink, not the real path.
 ln -s "${repo_dir}/CreateCppProject" "${work_dir}/CreateCppProject"
-ln -s "${repo_dir}/AddLibrary" "${work_dir}/AddLibrary"
+ln -s "${repo_dir}/AddCppLibrary" "${work_dir}/AddCppLibrary"
 
 cd "${work_dir}"
 
@@ -22,7 +22,7 @@ echo "=== generate project ==="
 ./CreateCppProject Demo
 
 echo "=== add library ==="
-./AddLibrary Demo Foo
+./AddCppLibrary Demo Foo
 
 # Wire up the library + executable.
 cat >> Demo/src/core/CMakeLists.txt <<'EOF'

@@ -23,14 +23,14 @@ Generate a project:
 This creates `MyProj/src/` from `template/project/` and substitutes the project
 name throughout the generated files.
 
-> `CreateCppProject` and `AddLibrary` resolve their own location through
+> `CreateCppProject` and `AddCppLibrary` resolve their own location through
 > symbolic links, so you can symlink them onto your `PATH`
 > (e.g. `ln -s "$PWD/CreateCppProject" ~/bin/`) and run them from anywhere.
 
 ### Add a library
 
 ```sh
-./AddLibrary MyProj MyLib
+./AddCppLibrary MyProj MyLib
 ```
 
 This creates `MyProj/src/core/include/MyProj/MyLib.h` and
